@@ -1,7 +1,7 @@
 module.exports = {
   sets: {
     desktop: {
-      files: "test/hermione",
+      files: "test/**/*.hermione.js",
     },
   },
 
@@ -17,6 +17,15 @@ module.exports = {
       },
     },
   },
+  
+  system: {
+    ctx: {
+      sutUri: "http://localhost:3000/hw/store",
+      defaultTimeout: 5000,
+      defaultSelector: '.Application'
+    }
+  },
+  
   plugins: {
     "html-reporter/hermione": {
       enabled: true,
