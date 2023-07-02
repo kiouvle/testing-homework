@@ -18,7 +18,7 @@ describe('Верстка должна адаптироваться под шир
         const catalog = new Catalog(browser, hermione.ctx);
         const page = await catalog.goTo();
         const linkDetails = await browser.$(
-            '[data-testid="111"] [data-testid=link-details]'
+            '[data-testid="69420"] [data-testid=link-details]'
         );
         await linkDetails.click();
         await page.waitForSelector('[data-testid=button-add-to-cart]');
