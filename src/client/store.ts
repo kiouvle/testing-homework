@@ -4,6 +4,7 @@ import { EMPTY, from, map, mapTo, mergeMap, mergeMapTo, Observable, tap } from '
 import { produce } from 'immer';
 import { CartState, CheckoutFormData, Product, ProductShortInfo } from '../common/types';
 import { CartApi, ExampleApi } from './api';
+import { configureStore } from "@reduxjs/toolkit";
 
 export interface ApplicationState {
     products?: ProductShortInfo[];
@@ -136,7 +137,7 @@ export const rootEpic = combineEpics(
     productDetailsLoadEpic,
 );
 
-export function initStore(api: ExampleApi, cart: CartApi) {
+export function initStore(api: ExampleApi, cart: CartApi, preloadedState?: Partial<ApplicationState>) {
     const rootReducer = createRootReducer({
         cart: cart.getState()
     });
@@ -145,7 +146,7 @@ export function initStore(api: ExampleApi, cart: CartApi) {
         dependencies: { api, cart }
     });
 
-    const store = createStore(rootReducer, applyMiddleware(epicMiddleware));
+    const store = configureStore({reducer: rootReducer, preloadedState, enhancers: [applyMiddleware(epicMiddleware)]});
 
     epicMiddleware.run(rootEpic);
 
