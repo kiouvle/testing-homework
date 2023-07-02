@@ -44,7 +44,7 @@ export const Cart: React.FC = () => {
         const total = Object.values(cart).reduce((sum, { count, price }) => sum + count * price, 0);
 
         content = (
-            <table className={bem('Table', ['table'])}>
+            <table data-testid="cart-table" className={bem('Table', ['table'])}>
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -68,7 +68,7 @@ export const Cart: React.FC = () => {
     } else {
         content = (
             <>
-                Cart is empty. Please select products in the <Link to="/catalog">catalog</Link>.
+                Cart is empty. Please select products in the <Link data-testid="cart-catalog-link" to="/catalog">catalog</Link>.
             </>
         );
     }
@@ -76,7 +76,7 @@ export const Cart: React.FC = () => {
     const actions = cartIsEmpty ? null : (
         <div className="row mb-4">
             <div className="col-6">
-                <button className={bem('Clear', ['btn', 'btn-outline-secondary'])} onClick={onClear}>Clear shopping cart</button>
+                <button data-testid="clear-cart-btn" className={bem('Clear', ['btn', 'btn-outline-secondary'])} onClick={onClear}>Clear shopping cart</button>
             </div>
         </div>
     );

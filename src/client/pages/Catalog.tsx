@@ -25,7 +25,7 @@ export const Catalog: React.FC = () => {
         'LOADING';
 
     return (
-        <div className={bem()}>
+        <div data-testid="catalog-page" className={bem()}>
             <Helmet title="Catalog" />
             <div className="row">
                 <div className="col">
